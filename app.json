@@ -1,6 +1,6 @@
 {
   "name": "Airlines Demo",
   "description": "A demo website for a sample airline",
-  "repository": "https://github.com/heroku/php-getting-started",
+  "repository": "https://github.com/hazemtaji/jasper-airlines",
   "addons": []
 }

@@ -7,7 +7,7 @@ A sample airlines PHP app that makes use of the [Silex](http://silex.sensiolabs.
 Install the [Heroku Toolbelt](https://toolbelt.heroku.com/).
 
 ```sh
-$ git clone git@github.com:hazemtaji/jasper-airlines.git # or clone your own fork
+$ git clone https://github.com/hazemtaji/jasper-airlines.git # or clone your own fork
 $ cd jasper-airlines
 $ heroku create
 $ git push heroku master
