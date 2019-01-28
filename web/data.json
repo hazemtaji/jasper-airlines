@@ -1,0 +1,20 @@
+
+export default
+[
+    {
+      "id": 1,
+      "model": "Dune Basher",
+      "year": 2018,
+      "transmission": "Automatic",
+      "price": 100000,
+      "currency": "AED"
+    },
+    {
+      "id": 2,
+      "model": "Dune Basher",
+      "year": 2018,
+      "transmission": "Manual",
+      "price": 90000,
+      "currency": "AED"
+    }
+]

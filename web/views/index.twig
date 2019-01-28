@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div style="height: 100%; background-image: url('/images/bg.jpg'); background-size: cover; color: white; background-position-y: center;">
+<div class="search_box">
+<form method="get" action="/search">
+  <div style="display: flex; margin: 16px 0px;">
+    <div class="search_field">
+      <label for="from" class="inline" >From</label>
+      <input name="from" type="text" value="LHR" />
+    </div>
+    <div class="search_field">
+      <label for="to">To</label>
+      <input name="to" type="text" value="DXB" />
+    </div>
+    <div class="search_field">
+      <div>
+        <input type="radio" id="journey_type_rt" name="journey_type" checked="checked" value="2" >
+        <label for="journey_type_rt" >Return </label>
+        <input type="radio" id="journey_type_ow" name="journey_type" value="1" >
+        <label for="journey_type_ow" >One way</label>
+        <input type="submit" value="BOOK NOW">
+      </div>
+    </div>
+  </div>
+  <div style="display: flex; margin: 16px 0px;">
+    <div class="search_field">
+      <label>Depart</label>
+      <input type="text" name="deptdate" required="" placeholder="DD/MM/YYYY" value="25/03/2030" />
+    </div>
+    <div class="search_field">
+      <label class=" text-right" >Return</label>
+      <input type="text" name="rtndate" placeholder="DD/MM/YYYY" value="17/04/2030" />
+    </div>
+    <div class="search_field" style="display: flex;">
+      <label class="" style="align-self: center; margin-top: 19px;">Passengers</label>
+      <div style="display: flex; margin-bottom: 5px;">
+        <div>
+          <label for="adults" class="passenger_label">Adults</label>
+          <select name="adults"><option value="1" >1</option><option value="2" >2</option><option value="3" >3</option><option value="4" >4</option><option value="5" >5</option><option value="6" >6</option><option value="7" >7</option><option value="8" >8</option><option value="9" >9</option></select>
+        </div>
+        <div>
+            <label for="children" class="passenger_label">Child (2-12) </label>
+            <select name="children"><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option></select>
+        </div>
+        <div>
+          <label for="infants" class="passenger_label">Infant <small >(&lt; 2)</small></label>
+          <select name="infants"><option value="0">0</option><option value="1">1</option></select>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+</div>
+{% endblock %}

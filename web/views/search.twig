@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script>
+/* COMMENTED CODE FOR SEARCH
+fbq('track', 'Search', {
+  content_type: 'flight',
+  departing_departure_date: '{{ deptdate | date('Y-m-d', false)}}',
+  returning_departure_date: '{{ rtndate | date('Y-m-d', false)}}',
+  origin_airport: '{{from}}',
+  destination_airport: '{{to}}',
+  num_adults: {{adults}},
+  num_children: {{children}},
+  num_infants: {{infants}},
+  travel_class : 'economy'
+});
+*/
+</script>
+
+<script>
+function showDiv(divName) {
+    var x = document.getElementById(divName);
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    }
+}
+</script>
+
+<script type="text/javascript">
+function viewSummary() {
+  showDiv('summary');
+  /* COMMENTED CODE FOR VIEW CONTENT
+  fbq('track', 'ViewContent', {
+    content_type: 'flight',
+    departing_departure_date: '{{deptdate | date("Y-m-d", false)}}',
+    returning_departure_date: '{{rtndate | date("Y-m-d", false)}}',
+    origin_airport: '{{from}}',
+    destination_airport: '{{to}}',
+    num_adults: {{adults}},
+    num_children: {{children}},
+    num_infants: {{infants}},
+    travel_class : 'economy'
+  });
+  */
+}
+
+function toPassengerScreen() {
+}
+</script>
+
+<div style="width: 1145px; margin: 0 auto;">
+  <div>
+    <h2 style="text-align: center; margin-top: 48px;">Select your departure flight from {{ from }} to {{ to }}:</h2>
+    <div style="display: flex; margin-top: 24px;">
+      {% for i in 0..4 %}
+        <div class="day_select" style="{{ i == 2 ? 'background: #eeeeee' : ''}}">
+          <div>{{ deptdate|date_modify("+#{i - 2} day")|date("l", false) }}</div>
+          <div>{{ deptdate|date_modify("+#{i - 2} day")|date("d/M", false) }}</div>
+          <div style="font-weight: bold;">{{800 + random(300)}} AED</div>
+        </div>
+      {% endfor %}
+    </div>
+    <div style="display: flex; margin-top: 24px; justify-content: space-between;">
+      <div style="display: flex;">
+        <div class="flight_time">19:20</div>
+        <div style="margin: 0 16px; line-height: 40px;">
+          <span class="glyphicon glyphicon-plane" style="transform: rotate(90deg); color: #3578E5;"></span>
+          <span class="plane_line"></span>
+        </div>
+        <div class="flight_time">23:00</div>
+      </div>
+      <div><input type="button" value="Choose Flight" class="select_flight" onclick="showDiv('return_flight')" /></div>
+    </div>
+  </div>
+  <div id="return_flight" style="display: none; margin-top: 72px;">
+    <h2 style="text-align: center; margin-top: 48px;">Select your return flight from {{ to }} to {{ from }}:</h2>
+    <div style="display: flex; margin-top: 24px;">
+      {% for i in 0..4 %}
+        <div class="day_select" style="{{ i == 2 ? 'background: #eeeeee' : ''}}">
+          <div>{{ rtndate|date_modify("+#{i - 2} day")|date("l", false) }}</div>
+          <div>{{ rtndate|date_modify("+#{i - 2} day")|date("d/M", false) }}</div>
+          <div style="font-weight: bold;">{{900 + random(300)}} AED</div>
+        </div>
+      {% endfor %}
+    </div>
+    <div style="display: flex; margin-top: 24px; justify-content: space-between;">
+      <div style="display: flex;">
+        <div class="flight_time">14:00</div>
+        <div style="margin: 0 16px; line-height: 40px;">
+          <span class="glyphicon glyphicon-plane" style="transform: rotate(90deg); color: #3578E5;"></span>
+          <span class="plane_line"></span>
+        </div>
+        <div class="flight_time">17:40</div>
+      </div>
+      <div><input id="view_summary" type="button" value="Choose Flight" class="select_flight" onclick="viewSummary()"/></div>
+    </div>
+  </div>
+  <div id="summary" style="display: none; margin-top: 72px;">
+    <h2>Summary of your choices:</h2>
+    <div style="display: flex; justify-content: space-between; width: 600px;">
+      <div>
+        <h3>Departure:</h3>
+        <div>
+          <h4>{{ from }} to {{ to }}</h4>
+          <div>Departs: {{ deptdate|date("d/m/y", false) }} 19:20</div>
+          <div>Arrives: {{ deptdate|date("d/m/y", false) }} 23:00</div>
+        </div>
+      </div>
+      <div>
+        <h3>Return:</h3>
+        <div>
+          <h4>{{ to }} to {{ from }}</h4>
+          <div>Departs: {{ rtndate|date("d/m/y", false) }} 14:00</div>
+          <div>Arrives: {{ rtndate|date("d/m/y", false) }} 17:40</div>
+        </div>
+      </div>
+      <h3>Total: {{1700 + random(400)}} AED</h3>
+    </div>
+    <div style="margin-top: 24px;"><input type="button" value="Continue to Passenger Details" class="select_flight" onclick="toPassengerScreen()"/></div>
+  </div>
+</div>
+{% endblock %}
